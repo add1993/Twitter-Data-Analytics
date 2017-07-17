@@ -64,7 +64,7 @@ def displayGraph():
 		tweets_data.append(dat)
 		count = count + 1
 		
-	return count
+	return str(count)
 		
 	tweets = pd.DataFrame()
 	#mapping location, date
