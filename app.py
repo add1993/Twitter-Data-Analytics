@@ -73,7 +73,7 @@ def displayGraph():
 	tweets = pd.DataFrame(tweets_data)
 	data_frame = pd.DataFrame(tweets_data) 
 
-	data_frame['A'] = pd.Series(tweets['date'], index=data_frame.index)
+	data_frame['A'] = pd.Series(tweets_data['date'], index=data_frame.index)
 	
 	#tweets['date'] = map(lambda tweet: tweet['created_at'], tweets_data)
 	#tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
