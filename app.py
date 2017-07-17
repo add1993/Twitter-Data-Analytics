@@ -72,6 +72,12 @@ def displayGraph():
 	#tweets['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
 	
 	tweets = pd.DataFrame(tweets_data)
+	data_frame = pd.DataFrame(tweets_data) 
+
+	print(data_frame)
+	#print(data_frame['created_at'])
+	
+	df = pd.DataFrame({'date':data_frame['created_at'].dt.date.unique()})
 	#data_frame = pd.DataFrame(tweets_data) 
 
 	#data_frame['A'] = pd.Series(tweets_data['date'], index=data_frame.index)
@@ -96,13 +102,15 @@ def displayGraph():
 	#tweets.apply(pd.to_dataframe(tweets['date']).sort_values(by = 'date', inplace = True)
 	#frequency of dates or the number of tweets that have occured that date
 	#y axis will have frequency
-	y_axis = tweets['created_at'].value_counts()
+	y_axis = data_frame['created_at'].dt.date.value_counts()
 	#y_axis = tweets.groupby(['date']).size()
 	#uniques dates for which you ought to plot , x axis 
 	#x_axis = tweets['date'].dt.date.unique()
 
-	print("Y")
+	print(y_axis)
 	#return y_axis.to_json()
+
+	print("abc")
 
 	fig, ax = plt.subplots()
 	ax.tick_params(axis='x', labelsize=8)
