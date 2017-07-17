@@ -81,7 +81,7 @@ def displayGraph():
 	
 	#data = odo('mongodb://root:root123@ds161742.mlab.com:61742/twitter_db::my_collection', pd.DataFrame)
 	#data = pd.DataFrame(list(collection.find()))
-	return tweets['created_at'].to_json()
+	#return tweets['created_at'].to_json()
 
 	#creating unique date and in date format from the raw data
 	#df = pd.DataFrame({'date':tweets['date'].dt.date.unique()})
@@ -96,13 +96,13 @@ def displayGraph():
 	#tweets.apply(pd.to_dataframe(tweets['date']).sort_values(by = 'date', inplace = True)
 	#frequency of dates or the number of tweets that have occured that date
 	#y axis will have frequency
-	y_axis = tweets['date'].value_counts()
+	y_axis = tweets['created_at'].value_counts()
 	#y_axis = tweets.groupby(['date']).size()
 	#uniques dates for which you ought to plot , x axis 
 	#x_axis = tweets['date'].dt.date.unique()
 
 	print("Y")
-	return y_axis.to_json()
+	#return y_axis.to_json()
 
 	fig, ax = plt.subplots()
 	ax.tick_params(axis='x', labelsize=8)
