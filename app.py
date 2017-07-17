@@ -12,7 +12,7 @@ import base64
 
 app = Flask(__name__)
 Bootstrap(app)
-MONGO_HOST= 'mongodb://localhost/apptest'
+MONGO_HOST= 'mongodb://root:root123@ds161742.mlab.com:61742/twitter_db'
 consumer_key = "2NAGFGRpb0jwHinsioMAt7tqb"
 consumer_secret = "s48FJkeQ2aTC3Ze6UZsa5Fhb7p2tzjqwYFblqzL5U8tdA6Shne"
 access_token = "885662530525253634-8fUqxEPaO7id39S2fpFO3xDCQVg8lmn"
@@ -36,7 +36,7 @@ def extractData():
 	
 	for tweet in tweepy.Cursor(api.search,q="#analytics",count=100,\
                            lang="en",\
-                           since="2017-07-7",until="2017-07-16").items():
+                           since="2017-07-7",until="2017-07-8").items():
 		#print tweet.created_at
 		data ={}
 		data['created_at'] = tweet.created_at
