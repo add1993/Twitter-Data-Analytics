@@ -88,7 +88,7 @@ def displayGraph():
 	#x_axis = tweets['date'].dt.date.unique()
 
 	print("Y")
-	#print(y_axis)
+	return y_axis
 
 	fig, ax = plt.subplots()
 	ax.tick_params(axis='x', labelsize=8)
