@@ -64,13 +64,13 @@ def displayGraph():
 		tweets_data.append(dat)
 		count = count + 1
 		
-	return str(tweets_data)
+	#return str(tweets_data)
 		
-	tweets = pd.DataFrame()
+	tweets = pd.DataFrame(tweets_data, columns=['date'])
 	#mapping location, date
 	#tweets['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
-	tweets['date'] = map(lambda tweet: tweet['created_at'], tweets_data)
-	tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
+	#tweets['date'] = map(lambda tweet: tweet['created_at'], tweets_data)
+	#tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
 	
 	return tweets.to_json()
 
