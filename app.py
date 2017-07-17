@@ -71,10 +71,10 @@ def displayGraph():
 	#mapping location, date
 	#tweets['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
 	
-	tweets = pd.DataFrame(tweets_data)
+	#tweets = pd.DataFrame(tweets_data)
 	data_frame = pd.DataFrame(tweets_data) 
 
-	print(data_frame)
+	#print(data_frame)
 	#print(data_frame['created_at'])
 	
 	df = pd.DataFrame({'date':data_frame['created_at'].dt.date.unique()})
@@ -107,10 +107,10 @@ def displayGraph():
 	#uniques dates for which you ought to plot , x axis 
 	#x_axis = tweets['date'].dt.date.unique()
 
-	print(y_axis)
+	#print(y_axis)
 	#return y_axis.to_json()
 
-	print("abc")
+	#print("abc")
 
 	fig, ax = plt.subplots()
 	ax.tick_params(axis='x', labelsize=8)
@@ -133,7 +133,7 @@ def displayPie():
 	client = MongoClient(MONGO_HOST)
 	db = client.twitter_db 
 	collection = db.my_collection
-
+        
 	img = io.BytesIO()
 
 	tweets_data = []
@@ -141,12 +141,17 @@ def displayPie():
 	for dat in collection.find({'created_at':{"$gte":date1, "$lt":date2}}):
 		tweets_data.append(dat)
 		
-	tweets = pd.DataFrame()
-	tweets['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
+	#tweets = pd.DataFrame()
+	data_frame = pd.DataFrame(tweets_data)
+	
+	#data_frame['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
 	#tweets.sort_values(by=['date'], ascending=[True])
-	location_df = tweets['location'].apply(lambda x: pd.Series(x.split(',')))
+	location_df = data_frame['location'].apply(lambda x: pd.Series(x.split(',')))
+	print(location_df)
 
+        
 	#renaming the columns to city, state, country.
+
 	location_df.rename(columns={0:'City',1:'Country',2:'Country2'},inplace=True)
 	location_df.Country.fillna(location_df.City, inplace=True)
 	location_df['Country'] = location_df['Country'].map(lambda x: x.strip())
@@ -160,6 +165,8 @@ def displayPie():
 	plot_url = base64.b64encode(img.getvalue()).decode()
 
 	return '<img src="data:image/png;base64,{}">'.format(plot_url)
+	
+        
 	
 if __name__ == "__main__":
 	app.run()
