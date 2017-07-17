@@ -75,7 +75,7 @@ def displayGraph():
 	#print unique dates if necessary
 	#print(df)
 
-	tweets.sort_values(by=['date'], ascending=[True])
+	#tweets.sort_values(by=['date'], ascending=[True])
 	#frequency of dates or the number of tweets that have occured that date
 	#y axis will have frequency
 	y_axis = tweets['date'].value_counts()
