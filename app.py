@@ -64,6 +64,8 @@ def displayGraph():
 		tweets_data.append(dat)
 		count = count + 1
 		
+	return str(tweets_data)
+		
 	tweets = pd.DataFrame()
 	#mapping location, date
 	#tweets['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
