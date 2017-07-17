@@ -70,7 +70,7 @@ def displayGraph():
 	tweets['date'] = map(lambda tweet: tweet['created_at'], tweets_data)
 	tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
 	
-	return tweets.to_json
+	return tweets.to_json()
 
 	#creating unique date and in date format from the raw data
 	#df = pd.DataFrame({'date':tweets['date'].dt.date.unique()})
