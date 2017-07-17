@@ -82,8 +82,8 @@ def displayGraph():
 	tweets.apply(pd.to_dataframe(tweets['date']).sort_values(by = 'date', inplace = True)
 	#frequency of dates or the number of tweets that have occured that date
 	#y axis will have frequency
-	y_axis = tweets['date'].value_counts()
-
+	#y_axis = tweets['date'].value_counts()
+	y_axis = tweets.groupby(['date']).size()
 	#uniques dates for which you ought to plot , x axis 
 	#x_axis = tweets['date'].dt.date.unique()
 
