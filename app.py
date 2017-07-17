@@ -59,9 +59,12 @@ def displayGraph():
 	img = io.BytesIO()
 	
 	tweets_data = []
-
+	count = 0
 	for dat in collection.find({'created_at':{"$gte":date1, "$lt":date2}}):
 		tweets_data.append(dat)
+		count = count + 1
+		
+	return tweets_data.to_json()
 		
 	tweets = pd.DataFrame()
 	#mapping location, date
