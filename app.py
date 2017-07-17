@@ -31,7 +31,7 @@ def extractData():
 	api = tweepy.API(auth)
 	
 	client = MongoClient(MONGO_HOST)
-	db = client.apptest 
+	db = client.twitter_db 
 	collection = db.my_collection
 	
 	for tweet in tweepy.Cursor(api.search,q="#analytics",count=100,\
@@ -78,7 +78,7 @@ def displayGraph():
 	tweets.sort_values(by=['date'], ascending=[True])
 	#frequency of dates or the number of tweets that have occured that date
 	#y axis will have frequency
-	y_axis = tweets['date'].dt.date.value_counts()
+	y_axis = tweets['date'].value_counts()
 
 	#uniques dates for which you ought to plot , x axis 
 	x_axis = tweets['date'].dt.date.unique()
