@@ -81,7 +81,7 @@ def displayGraph():
 	y_axis = tweets['date'].value_counts()
 
 	#uniques dates for which you ought to plot , x axis 
-	x_axis = tweets['date'].dt.date.unique()
+	#x_axis = tweets['date'].dt.date.unique()
 
 	print("Y")
 	print(y_axis)
