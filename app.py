@@ -75,8 +75,9 @@ def displayGraph():
 	#print unique dates if necessary
 	#print(df)
 
-	tweets['date'] = tweets['date'].astype('int')
-	tweets.sort_values(by='date')
+	#tweets['date'] = tweets['date'].astype('int')
+	tweets['date'] = pd.to_datetime(tweets['date'])
+	tweets.sort_values(by='date',ascending=[True],inplace=True)
 	#tweets.sort_values(by=['date'], ascending=[True])
 	#frequency of dates or the number of tweets that have occured that date
 	#y axis will have frequency
