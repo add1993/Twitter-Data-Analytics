@@ -74,8 +74,8 @@ def displayGraph():
 	#tweets['date'] = map(lambda tweet: tweet['created_at'], tweets_data)
 	#tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
 	
-	data = odo('mongodb://root:root123@ds161742.mlab.com:61742/twitter_db::my_collection', pd.DataFrame)
-	
+	#data = odo('mongodb://root:root123@ds161742.mlab.com:61742/twitter_db::my_collection', pd.DataFrame)
+	data = pd.DataFrame(list(collection.find()))
 	return data.to_json()
 
 	#creating unique date and in date format from the raw data
