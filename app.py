@@ -70,13 +70,13 @@ def displayGraph():
 	#mapping location, date
 	#tweets['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
 	
-	#tweets = pd.DataFrame()
+	tweets = pd.DataFrame(tweets_data)
 	#tweets['date'] = map(lambda tweet: tweet['created_at'], tweets_data)
 	#tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
 	
 	#data = odo('mongodb://root:root123@ds161742.mlab.com:61742/twitter_db::my_collection', pd.DataFrame)
-	data = pd.DataFrame(list(collection.find()))
-	return data.to_json()
+	#data = pd.DataFrame(list(collection.find()))
+	return tweets.to_json()
 
 	#creating unique date and in date format from the raw data
 	#df = pd.DataFrame({'date':tweets['date'].dt.date.unique()})
