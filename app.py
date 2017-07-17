@@ -70,10 +70,10 @@ def displayGraph():
 	tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
 
 	#creating unique date and in date format from the raw data
-	df = pd.DataFrame({'date':tweets['date'].dt.date.unique()})
+	#df = pd.DataFrame({'date':tweets['date'].dt.date.unique()})
 
 	#print unique dates if necessary
-	print(df)
+	#print(df)
 
 	tweets.sort_values(by=['date'], ascending=[True])
 	#frequency of dates or the number of tweets that have occured that date
