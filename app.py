@@ -38,7 +38,6 @@ def extractData():
 	for tweet in tweepy.Cursor(api.search,q="#analytics",count=100,\
                            lang="en",\
                            since="2017-07-7",until="2017-07-8").items():
-		#print tweet.created_at
 		data ={}
 		data['created_at'] = tweet.created_at
 		data['geo'] = tweet.geo
@@ -61,56 +60,18 @@ def displayGraph():
 	
 	tweets_data = []
 	count = 0
-	#tweets = pd.DataFrame()
+	
 	for dat in collection.find({'created_at':{"$gte":date1, "$lt":date2}}):
 		tweets_data.append(dat)
 		count = count + 1
 		
-	#return str(tweets_data)
-		
-	#mapping location, date
-	#tweets['location'] = map(lambda tweet: tweet['location']if tweet['location'] != '' else '', tweets_data)
-	
-	#tweets = pd.DataFrame(tweets_data)
 	data_frame = pd.DataFrame(tweets_data) 
 
-	#print(data_frame)
-	#print(data_frame['created_at'])
-	
 	df = pd.DataFrame({'date':data_frame['created_at'].dt.date.unique()})
-	#data_frame = pd.DataFrame(tweets_data) 
 
-	#data_frame['A'] = pd.Series(tweets_data['date'], index=data_frame.index)
-	
-	#tweets['date'] = map(lambda tweet: tweet['created_at'], tweets_data)
-	#tweets['id'] = map(lambda tweet: tweet['id'],tweets_data)
-	
-	#data = odo('mongodb://root:root123@ds161742.mlab.com:61742/twitter_db::my_collection', pd.DataFrame)
-	#data = pd.DataFrame(list(collection.find()))
-	#return tweets['created_at'].to_json()
-
-	#creating unique date and in date format from the raw data
-	#df = pd.DataFrame({'date':tweets['date'].dt.date.unique()})
-
-	#print unique dates if necessary
-	#print(df)
-
-	#tweets['date'] = tweets['date'].astype('int')
-	#tweets['date'] = pd.to_datetime(tweets['date'])
-	#tweets.sort_values(by='date',ascending=[True],inplace=True)
-	#tweets.sort_values(by=['date'], ascending=[True])
-	#tweets.apply(pd.to_dataframe(tweets['date']).sort_values(by = 'date', inplace = True)
 	#frequency of dates or the number of tweets that have occured that date
 	#y axis will have frequency
 	y_axis = data_frame['created_at'].dt.date.value_counts()
-	#y_axis = tweets.groupby(['date']).size()
-	#uniques dates for which you ought to plot , x axis 
-	#x_axis = tweets['date'].dt.date.unique()
-
-	#print(y_axis)
-	#return y_axis.to_json()
-
-	#print("abc")
 
 	fig, ax = plt.subplots()
 	ax.tick_params(axis='x', labelsize=8)
