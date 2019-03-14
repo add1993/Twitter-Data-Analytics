@@ -1,4 +1,4 @@
-README
+Steps to run the project
 
 1. The first step of this project was to extract data. For this tweepy library of twitter was used for data extraction. Tweepy gives Cursor API to get data.
 e.g. Firstly you will need keys to get twitter data.
